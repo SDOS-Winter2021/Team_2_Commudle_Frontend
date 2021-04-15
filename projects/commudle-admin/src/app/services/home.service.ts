@@ -8,11 +8,14 @@ import {ILabs} from 'projects/shared-models/labs.model';
 import {ICommunityBuilds} from 'projects/shared-models/community-builds.model';
 import {IEvents} from 'projects/shared-models/events.model';
 import {IHomeSearch} from '../../../../shared-models/home-search.model';
+import {ISingleExternalFeed} from 'projects/shared-models/single-external-feed.model'
 
 @Injectable({
   providedIn: 'root'
 })
 export class HomeService {
+
+  private feed_api = 'http://15.207.110.193/feed/latest-feed/';
 
   constructor(
     private http: HttpClient,
@@ -30,6 +33,14 @@ export class HomeService {
     return this.http.get<ICommunities>(
       this.apiRoutesService.getRoute(API_ROUTES.HOME.COMMUNITIES)
     )
+  }
+
+  feed(): Observable<ISingleExternalFeed[]>{
+    // return this.http.get<IExternalFeed>(
+    //   (this.api)
+    // );
+    return this.http.get<ISingleExternalFeed[]>(
+      this.apiRoutesService.getFeedRoute(API_ROUTES.EXTERNAL_FEEDS.INDEX));
   }
 
   communityBuilds(): Observable<ICommunityBuilds> {

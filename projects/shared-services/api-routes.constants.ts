@@ -38,6 +38,12 @@ export const API_ROUTES = {
     }
   },
 
+  // Feeds
+  EXTERNAL_FEEDS: {
+      INDEX: 'feed/latest-feed/',
+      SHOW: 'feed/post/',
+    },
+
   COMMUNITY_CHANNELS: {
     USER_CHANNEL_COMMUNITIES: 'api/v2/community_channels/user_channel_communities',
     INDEX: 'api/v2/community_channels',

@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class ApiRoutesService {
   // this baseUrl needs to be set from the app which is calling this service when the app loads in the app component itself
   private baseApiUrl;
+  private baseFeedUrl ='http://15.207.110.193'
 
   constructor() { }
 
@@ -19,6 +20,10 @@ export class ApiRoutesService {
 
   getRoute(routeValue: string): string {
     return `${this.baseApiUrl}/${routeValue}`;
+  }
+
+  getFeedRoute(routeValue: string): string {
+    return `${this.baseFeedUrl}/${routeValue}`;
   }
 
 }

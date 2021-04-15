@@ -14,57 +14,24 @@
 
     <!-- If the length of external feed is non - zero-->
     <!-- <nb-list *ngIf="feed.length > 0"></nb-list> -->
-
-    <nb-list>
-      <nb-list-item>
-        <div class="home-external-feed-link d-flex align-items-center">
+    <nb-list *ngIf="feeds.length > 0">
+      <nb-list-item *ngFor="let feed of feeds; let i = index" class="clickable">
+        <div [routerLink]="['/feed', feed.id]" class="home-external-feed-link d-flex align-items-center">
           <div class="home-external-feed-link-image d-flex align-items-center">
-            <img alt="Commudle" src="/assets/images/commudle-logo-full.png">
+            <img alt="{{feed.source.name}}" src="{{feed.image_url}}">
           </div>
           <div class="home-external-feed-link-details" >
             <div class="home-external-feed-link-title">
-              <a href="https://commudler.gitbook.io/commudle/community-dashboard/communities" target="_blank">
-              Communities on Commudle, literally everything you need! </a>
+              {{feed.title}}
             </div>
             <div class="home-external-feed-link-source">
-              Source: Hacker Noon
-            </div> 
-          </div>
-        </div>
-      </nb-list-item>
-      <nb-list-item>
-        <div class="home-external-feed-link d-flex align-items-center">
-          <div class="home-external-feed-link-image d-flex align-items-center">
-            <img alt="Commudle" src="/assets/images/commudle-logo-full.png">
-          </div>
-          <div class="home-external-feed-link-details" >
-            <div class="home-external-feed-link-title">
-              <a href="https://commudler.gitbook.io/commudle/community-dashboard/events/registrations#registration-forms" target="_blank">
-                Do surveys via forms in your community </a>
+              Source: {{feed.source.name}}
             </div>
-            <div class="home-external-feed-link-source">
-              Source: Hacker Noon
-            </div>
-          </div>
-        </div>
-      </nb-list-item>
-      <nb-list-item>
-        <div class="home-external-feed-link d-flex align-items-center">
-          <div class="home-external-feed-link-image d-flex align-items-center">
-            <img alt="Commudle" src="/assets/images/commudle-logo-full.png">
-          </div>
-          <div class="home-external-feed-link-details" >
-            <div class="home-external-feed-link-title">
-              <a href="https://commudler.gitbook.io/commudle/community-dashboard/members" target="_blank">
-                Search your community members </a>
-            </div>
-            <div class="home-external-feed-link-source">
-              Source: Hacker Noon
-            </div>
-          </div>
+          </div> 
         </div>
       </nb-list-item>
     </nb-list>
+
     <div [routerLink]="['/feed']" class="home-external-feed-link-all text-center clickable">
       <a>View More</a>
     </div>
